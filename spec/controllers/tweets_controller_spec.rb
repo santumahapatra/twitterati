@@ -19,4 +19,17 @@ RSpec.describe TweetsController, :type => :controller do
       expect(assigns(:tweet)).to be_a_new(Tweet)
     end
   end
+
+  describe 'POST #create' do
+    it 'creates a tweet' do
+      post :create, tweet: { content: 'abc' }
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'does not create tweet if tweet can be created' do
+      post :create, tweet: { content: '' }
+      expect(response).not_to have_http_status(:success)
+    end
+  end
+
 end
