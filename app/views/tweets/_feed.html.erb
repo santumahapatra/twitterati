@@ -1,0 +1,7 @@
+<ul class="tweets">
+  <% @feed_items.each do |feed_item| %>
+    <li id="<%= feed_item.id %>" class="feed-item well">
+      <div class="content"><%= feed_item.content %></div>
+    </li>
+  <% end %>
+</ul>

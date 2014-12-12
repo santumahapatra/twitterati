@@ -4,6 +4,7 @@ RSpec.describe "tweets/index.html.erb", :type => :view do
 
   before do
     @tweet = Tweet.new
+    @feed_items = Tweet.all
     render
   end
 
