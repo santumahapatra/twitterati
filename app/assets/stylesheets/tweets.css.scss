@@ -2,7 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.form-horizontal .input-text-area{
-  width: 300px;
-  height: 100px;
+.form.tweet-form {
+  #error_explanation ul li{
+    color:red;
+  }
+
+  .input-text-area{
+    resize: none;
+  }
+
+  .actions{
+    text-align: right;
+
+    .tweet-btn{
+      margin: 10px;
+    }
+  }
 }
