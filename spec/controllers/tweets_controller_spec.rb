@@ -18,6 +18,10 @@ RSpec.describe TweetsController, :type => :controller do
     it 'has a instance variable tweet which is a new Tweet' do
       expect(assigns(:tweet)).to be_a_new(Tweet)
     end
+
+    it 'has a instance variable feed which has all Tweets' do
+      expect(assigns(:feed)).to eq(Tweet.all)
+    end
   end
 
   describe 'POST #create' do

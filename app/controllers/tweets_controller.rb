@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   def index
     @tweet = Tweet.new
+    @feed = Tweet.all
   end
 
   def create
