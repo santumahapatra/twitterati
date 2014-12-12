@@ -1,33 +1,20 @@
-<div class="panel panel-info">
+<div class="panel panel-info tweet-form-container">
   <div class="panel-heading">
     <h3 class="panel-title">What's happening?</h3>
   </div>
   <div class="panel-body">
     <div class="well">
-      <%= form_for(@tweet, :html => {:role => 'form', :class => 'form tweet-form'}) do |f| %>
-        <% if @tweet.errors.any? %>
-          <div id="error_explanation">
-            <h4><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h4>
-
-            <ul>
-            <% @tweet.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="field">
-          <div><%= f.label :content %> </div>
-          <div>Please tweet less than 140 characters.</div><br/>
-          <%= f.text_area :content, :rows => 3, :class => 'col-md-5 col-lg-5 col-sm-8 input-text-area form-control' %>
-          <div id="tweet_error_field" class="hide">Tweet cannot be blank or more than 140 characters</div>
-        </div>
-        
-        <div class="actions">
-          <%= f.submit class: 'btn btn-primary tweet-btn' %>
-        </div>
-      <% end %>
+      <%= render 'tweet_form' %>
+    </div>
+  </div>
+</div>
+<div class="panel panel-info feed-container">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets</h3>
+  </div>
+  <div class="panel-body">
+    <div class="well">
+      <%= render 'feed' %>
     </div>
   </div>
 </div>

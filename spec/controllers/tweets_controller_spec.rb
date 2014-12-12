@@ -20,7 +20,7 @@ RSpec.describe TweetsController, :type => :controller do
     end
 
     it 'has a instance variable feed which has all Tweets' do
-      expect(assigns(:feed)).to eq(Tweet.all)
+      expect(assigns(:feed_items)).to eq(Tweet.all)
     end
   end
 
