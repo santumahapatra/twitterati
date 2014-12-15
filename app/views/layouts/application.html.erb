@@ -12,6 +12,11 @@
       <%= menu_group do %>
         <%= menu_item "Home", root_path %>
       <% end %>
+
+      <%= menu_group :pull => :right do %>
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/login_items' %>
+      <% end %>
     <% end %>
     <div class="col-lg-offset-3 col-lg-5 col-md-offset-3 col-md-5 col-sm-offset-2 col-sm-8 col-xs-12">
       <p class="notice"><%= notice %></p>
