@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Tweet, :type => :model do
-  let (:tweet) { Tweet.new }
+  let(:tweet) { FactoryGirl.create(:tweet) }
 
   it { is_expected.to respond_to(:content) }
 
@@ -19,6 +19,15 @@ RSpec.describe Tweet, :type => :model do
   describe 'is valid' do
     it 'if content is less than 140 characters' do
       expect( Tweet.new(content: "Hello World") ).to be_valid
+    end
+  end
+
+  describe 'returns tweets' do
+    it 'in reverse chronological order' do
+      @tweet1 = FactoryGirl.create(:tweet, content: "hello1")
+      @tweet2 = FactoryGirl.create(:tweet, content: "hello2")
+      @tweet3 = FactoryGirl.create(:tweet, content: "hello3")
+      expect( Tweet.all ).to eq([@tweet3, @tweet2, @tweet1])
     end
   end
 end
