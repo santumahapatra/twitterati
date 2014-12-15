@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "tweets/index.html.erb", :type => :view do
 
+  let (:user) { FactoryGirl.create(:user) }
+
   before do
-    @tweet = Tweet.new
+    allow(view).to receive(:current_user).and_return(user)
+    @tweet = user.tweets.build
     @feed_items = Tweet.all
     render
   end

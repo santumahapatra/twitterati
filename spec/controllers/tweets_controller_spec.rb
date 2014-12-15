@@ -4,8 +4,9 @@ RSpec.describe TweetsController, :type => :controller do
 
   describe '#index' do
     context 'for authenticated user' do
+      let (:tweet) { FactoryGirl.create(:tweet) }
       before do
-        sign_in
+        sign_in tweet.user
         get :index
       end
 
@@ -40,8 +41,9 @@ RSpec.describe TweetsController, :type => :controller do
 
   describe 'POST #create' do
     context 'for authenticated user' do
+      let (:tweet) { FactoryGirl.create(:tweet) }
       before do
-        sign_in
+        sign_in tweet.user
       end
 
       it 'redirects to root path if tweet is valid' do

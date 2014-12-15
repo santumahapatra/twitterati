@@ -1,12 +1,14 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!, :only => [:index, :create]
+  before_action :current_user, :only => [:index, :create]
+
   def index
-    @tweet = Tweet.new
+    @tweet  = current_user.tweets.build
     feed
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
     feed
 
     if @tweet.save
@@ -19,7 +21,7 @@ class TweetsController < ApplicationController
   private
 
     def tweet_params
-      params.require(:tweet).permit(:content)
+      params.require(:tweet).permit(:content, :user_id)
     end
 
     def feed

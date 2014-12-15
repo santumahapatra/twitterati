@@ -12,6 +12,7 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <div><%= f.label :content %> </div>
     <div>Please tweet less than 140 characters.</div><br/>
     <%= f.text_area :content, :rows => 3, :class => 'col-md-5 col-lg-5 col-sm-8 input-text-area form-control' %>
