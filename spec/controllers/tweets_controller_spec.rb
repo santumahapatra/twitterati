@@ -25,12 +25,12 @@ RSpec.describe TweetsController, :type => :controller do
   end
 
   describe 'POST #create' do
-    it 'creates a tweet' do
+    it 'redirects to root path if tweet is valid' do
       post :create, tweet: { content: 'abc' }
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(root_path)
     end
 
-    it 'does not create tweet if tweet can be created' do
+    it 'shows error message if tweet is not valid' do
       post :create, tweet: { content: '' }
       expect(response).not_to have_http_status(:success)
     end
