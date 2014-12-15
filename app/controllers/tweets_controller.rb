@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, :only => [:index, :create]
   def index
     @tweet = Tweet.new
     feed
