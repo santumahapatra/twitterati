@@ -43,4 +43,44 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
   end
+
+  describe '#following' do
+    let (:t_user) { FactoryGirl.create(:user) }
+    let (:other_user) { FactoryGirl.create(:user, :email => 'notrandm@random.com' ) }
+
+    before do
+      allow(User).to receive(:find).with('2').and_return(other_user)
+      other_user.follow!(t_user)
+      get :following, id: 2.to_s
+    end
+
+    it 'sets the user instance' do
+      expect(controller.params[:id]).to eql '2'
+      expect(assigns(:user)).to eq(other_user)
+    end
+
+    it 'sets the users instance' do
+      expect(assigns(:users)).to include(t_user)
+    end 
+  end
+
+  describe '#followers' do
+    let (:t_user) { FactoryGirl.create(:user) }
+    let (:other_user) { FactoryGirl.create(:user, :email => 'notrandm@random.com' ) }
+
+    before do
+      allow(User).to receive(:find).with('2').and_return(other_user)
+      t_user.follow!(other_user)
+      get :followers, id: 2.to_s
+    end
+
+    it 'sets the user instance' do
+      expect(controller.params[:id]).to eql '2'
+      expect(assigns(:user)).to eq(other_user)
+    end
+
+    it 'sets the users instance' do
+      expect(assigns(:users)).to include(t_user)
+    end 
+  end
 end
