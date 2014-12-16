@@ -6,4 +6,5 @@ RSpec.describe User, :type => :model do
   subject { user }
 
   it { is_expected.to respond_to(:tweets) }
+  it { is_expected.to respond_to(:relationships) }
 end
