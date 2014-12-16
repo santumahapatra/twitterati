@@ -7,7 +7,7 @@ RSpec.describe "tweets/index.html.erb", :type => :view do
   before do
     allow(view).to receive(:current_user).and_return(user)
     @tweet = user.tweets.build
-    @feed_items = Tweet.all
+    @feed_items = user.feed
     render
   end
 

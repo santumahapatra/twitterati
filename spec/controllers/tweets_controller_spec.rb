@@ -4,9 +4,16 @@ RSpec.describe TweetsController, :type => :controller do
 
   describe '#index' do
     context 'for authenticated user' do
-      let (:tweet) { FactoryGirl.create(:tweet) }
+      let! (:user1) { FactoryGirl.create(:user) }
+      let! (:tweet1) { FactoryGirl.create(:tweet, :user => user1) }
+      let! (:user2) { FactoryGirl.create(:user, :email => 'user2@user.com') }
+      let! (:user3) { FactoryGirl.create(:user, :email => 'user3@user.com') }
+      let! (:tweet2) { FactoryGirl.create(:tweet, :user => user2) }
+      let! (:tweet3) { FactoryGirl.create(:tweet, :user => user3) }
+      
       before do
-        sign_in tweet.user
+        user1.follow!(user2)
+        sign_in user1
         get :index
       end
 
@@ -22,8 +29,10 @@ RSpec.describe TweetsController, :type => :controller do
         expect(assigns(:tweet)).to be_a_new(Tweet)
       end
 
-      it 'has a instance variable feed which has all Tweets' do
-        expect(assigns(:feed_items)).to eq(Tweet.all)
+      it 'has a instance variable feed_items that contains tweets from followed users' do
+        expect(assigns(:feed_items)).to include(tweet1)
+        expect(assigns(:feed_items)).to include(tweet2)
+        expect(assigns(:feed_items)).not_to include(tweet3)
       end
     end
 

@@ -25,6 +25,6 @@ class TweetsController < ApplicationController
     end
 
     def feed
-      @feed_items = Tweet.all
+      @feed_items = current_user.feed
     end
 end
