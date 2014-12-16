@@ -1,1 +1,15 @@
-<div>Hello</div>
+<div>
+  <div>User Email: <%= @user.email %></div>
+</div>
+<div>
+  <h4>Tweets by the User</h4>
+  <% if @tweets.any? %>
+    <ul class="tweets">
+      <% @tweets.each do |tweet| %>
+        <li class="tweet">
+          <%= tweet.content %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
