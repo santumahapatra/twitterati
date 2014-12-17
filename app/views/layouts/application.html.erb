@@ -11,10 +11,10 @@
     <%= nav_bar :fixed => :top, :brand  => Twitterati, :responsive => true do %>
       <%= menu_group do %>
         <%= menu_item "Home", root_path %>
+        <%= menu_item "Users", users_path %>
       <% end %>
 
       <%= menu_group :pull => :right do %>
-        <%= menu_item "Users", users_path %>
         <%= render 'devise/menu/registration_items' %>
         <%= render 'devise/menu/login_items' %>
       <% end %>

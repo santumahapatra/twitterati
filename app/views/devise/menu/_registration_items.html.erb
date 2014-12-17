@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= menu_item('Edit registration', edit_user_registration_path) %>
+  <%= menu_item('Settings', edit_user_registration_path) %>
 <% else %>
   <%= menu_item('Register', new_user_registration_path)  %>
 <% end %>
