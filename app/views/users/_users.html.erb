@@ -1,0 +1,14 @@
+<div class="panel panel-info feed-container">
+  <div class="panel-heading">
+    <h3 class="panel-title">Users</h3>
+  </div>
+  <div class="panel-body">
+    <div class="well">
+      <% if @users.any? %>
+        <ul class="users">
+          <%= render @users %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

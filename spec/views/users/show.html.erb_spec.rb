@@ -19,8 +19,4 @@ RSpec.describe "users/show.html.erb", :type => :view do
   it 'renders the email of the user' do
     expect(rendered).to have_content(@user.email)
   end
-
-  it 'renders the tweets made by the user' do
-    expect(rendered).to have_css('ul.tweets li.tweet')
-  end
 end

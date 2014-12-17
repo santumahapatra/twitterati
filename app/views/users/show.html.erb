@@ -1,22 +1,32 @@
-<div>
-  <div>User Email: <%= @user.email %></div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <div>Email: <%= @user.email %></div>
+  </div>
+  <div class="panel-body">
+    <div class="well">
+      <%= render 'shared/stats' %>
+      <%= render 'follow_form' if signed_in? %>  
+    </div>
+  </div>
 </div>
-  
-<section>
-  <%= render 'shared/stats' %>
-</section>
 
-<%= render 'follow_form' if signed_in? %>
 
-<div>
-  <h4>Tweets by the User</h4>
-  <% if @tweets.any? %>
-    <ul class="tweets">
-      <% @tweets.each do |tweet| %>
-        <li class="tweet">
-          <%= tweet.content %>
-        </li>
+
+<div class="panel panel-info feed-container">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweets by the User</h3>
+  </div>
+  <div class="panel-body">
+    <div class="well">
+      <% if @tweets.any? %>
+        <ul class="users">
+          <% @tweets.each do |tweet| %>
+            <li class="tweet well">
+              <%= tweet.content %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+  </div>
 </div>
