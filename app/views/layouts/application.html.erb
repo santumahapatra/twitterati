@@ -14,6 +14,7 @@
       <% end %>
 
       <%= menu_group :pull => :right do %>
+        <%= menu_item "Users", users_path %>
         <%= render 'devise/menu/registration_items' %>
         <%= render 'devise/menu/login_items' %>
       <% end %>
